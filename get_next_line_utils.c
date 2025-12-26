@@ -6,7 +6,7 @@
 /*   By: ahsoussa <ahsoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 15:17:33 by ahsoussa          #+#    #+#             */
-/*   Updated: 2025/12/24 20:35:30 by ahsoussa         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:11:20 by ahsoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,13 @@
 
 char	*ft_strdup(char *str)
 {
-	char			*dest;
-	unsigned int	i;
+	char	*dest;
+	size_t	i;
 
 	i = 0;
-	dest = (char *)malloc(ft_strlen(str) + 1);
+	dest = (char *) malloc(ft_strlen(str) + 1);
 	if (!dest)
-		return (NULL)
+		return (NULL);
 	while (str[i])
 	{
 		dest[i] = str[i];
@@ -32,13 +32,14 @@ char	*ft_strdup(char *str)
 
 size_t	ft_strlen(char *str)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
 	while (str[i])
 		i++;
 	return (i);
 }
+
 char	*ft_substr(char *s, unsigned int start, size_t len)
 {
 	size_t	i;
@@ -48,13 +49,13 @@ char	*ft_substr(char *s, unsigned int start, size_t len)
 	if (!s)
 		return (NULL);
 	if (start > ft_strlen(s))
-		return (ft_strdup(''));
+		return (ft_strdup(""));
 	if (len > ft_strlen(s) - start)
 		len = ft_strlen(s) - start;
 	str = malloc((len + 1) * sizeof(char));
 	if (!str)
 		return (NULL);
-	while (i < len)
+	while (s[start + 1] && i < len)
 	{
 		str[i] = s[start + i];
 		i++;
@@ -90,4 +91,22 @@ char	*ft_strjoin(const char *s1, const char *s2)
 	}
 	res[j + i] = '\0';
 	return (res);
+}
+
+char	*ft_strchr(char *str, int c)
+{
+	unsigned int	i;
+	char			cc;
+
+	i = 0;
+	cc = (char) c;
+	while (str[i] != '\0')
+	{
+		if (str[i] == cc)
+			return ((char *)&str[i]);
+		i++;
+	}
+	if (str[i] == cc)
+		return ((char *) &str[i]);
+	return (NULL);
 }

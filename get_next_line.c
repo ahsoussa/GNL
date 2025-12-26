@@ -6,32 +6,18 @@
 /*   By: ahsoussa <ahsoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 19:49:18 by ahsoussa          #+#    #+#             */
-/*   Updated: 2025/12/24 19:49:23 by ahsoussa         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:09:47 by ahsoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-char	*ft_strchr(char *str, int c)
+#include "get_next_line.h"
+
+char	*ft_readline(int fd, char *stash, char *buffer)
 {
-	int	i;
+	char		*tmp;
+	ssize_t		retbuff;
 
-	i = 0;
-	if (!str)
-		return (NULL);
-	while (str[i]!= '\0')
-	{
-		if (str[i] == 'c')
-			return (&str[i]);
-		i++;
-	}
-	return (NULL);
-}
-
-char	*ft_readline(fd, *stash, *buffer)
-{
-	char	*tmp;
-	int		retbuff;
-
-	retbuff == 1;
+	retbuff = 1;
 	while (retbuff > 0)
 	{
 		retbuff = read(fd, buffer, BUFFER_SIZE);
@@ -41,7 +27,7 @@ char	*ft_readline(fd, *stash, *buffer)
 			return (NULL);
 		}
 		if (retbuff == 0)
-			break;
+			break ;
 		buffer[retbuff] = '\0';
 		if (!stash)
 			stash = ft_strdup("");
@@ -49,22 +35,23 @@ char	*ft_readline(fd, *stash, *buffer)
 		stash = ft_strjoin(tmp, buffer);
 		free (tmp);
 		tmp = NULL;
-		if (ft_strchr(buffer, '\n'));
-			break;
+		if (ft_strchr(buffer, '\n'))
+			break ;
 	}
 	return (stash);
 }
+
 char	*ft_freeline(char *stash)
 {
 	char	*line;
 	int		i;
 
 	i = 0;
-	while (stash[i] !='\0' && stash[i] != '\n')
+	while (stash[i] != '\0' && stash[i] != '\n')
 		i++;
 	if (stash[i] == '\0' || stash[i + 1] == '\0')
 		return (NULL);
-	line = ft_substr(stash, i + 1, ft_strlen(stash) - i)
+	line = ft_substr(stash, i + 1, ft_strlen(stash) - i);
 	if (*line == 0)
 	{
 		free(line);
@@ -74,7 +61,7 @@ char	*ft_freeline(char *stash)
 	return (line);
 }
 
-char	*get_next_line(int	fd)
+char	*get_next_line(int fd)
 {
 	static char	*stash;
 	char		*line;
