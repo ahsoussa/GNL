@@ -1,0 +1,2 @@
+hello \nworld
+je m'appelle Ahmed

@@ -6,7 +6,7 @@
 /*   By: ahsoussa <ahsoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 15:17:33 by ahsoussa          #+#    #+#             */
-/*   Updated: 2025/12/26 20:11:20 by ahsoussa         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:27:45 by ahsoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ char	*ft_strdup(char *str)
 	return (dest);
 }
 
-size_t	ft_strlen(char *str)
+size_t	ft_strlen(const char *str)
 {
 	size_t	i;
 
@@ -72,7 +72,7 @@ char	*ft_strjoin(const char *s1, const char *s2)
 
 	i = 0;
 	j = 0;
-	res = (char *)malloc(ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char);
+	res = (char *)malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
 	if (!res)
 		return (NULL);
 	if (!s1 || !s2)

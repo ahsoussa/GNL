@@ -6,7 +6,7 @@
 /*   By: ahsoussa <ahsoussa@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/24 19:49:18 by ahsoussa          #+#    #+#             */
-/*   Updated: 2025/12/26 20:09:47 by ahsoussa         ###   ########.fr       */
+/*   Updated: 2025/12/26 20:30:20 by ahsoussa         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,3 +84,31 @@ char	*get_next_line(int fd)
 	stash = ft_freeline(line);
 	return (line);
 }
+
+// int main(int argc, char **argv)
+// {
+//     int   fd;
+//     char  *line;
+
+//     if (argc != 2)
+//     {
+//         printf("Usage: %s <filename>\n", argv[0]);
+//         return (1);
+//     }
+
+//     fd = open(argv[1], O_RDONLY);
+//     if (fd < 0)
+//     {
+//         perror("Error opening file");
+//         return (1);
+//     }
+
+//     while ((line = get_next_line(fd)) != NULL)
+//     {
+//         printf("%s", line);  // line contient déjà le '\n' si présent
+//         free(line);
+//     }
+
+//     close(fd);
+//     return (0);
+// }
